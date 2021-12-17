@@ -4,7 +4,6 @@ const User		= require("./../models/User")
 
 
 // 1. Crear un usuario
-
 exports.create = async (req, res) => {
 
 	// Obtener datos del formulario del usuario (Req)
@@ -79,5 +78,114 @@ exports.create = async (req, res) => {
 
 	}
 }
+
+
+// 2. Iniciar Sesion 
+// Autenticar que la persona que pase su email y contraseña coincidan, y se le asigna un token
+exports.login = async (req, res) => {
+
+	
+    // 1. Obtener el email y el password del formulario (JSON)
+	const { email, password } = req.body
+
+	try {
+		
+        // 2. Encontart un usuario en DB
+		const foundUser = await User.findOne({ email })
+
+		// 3. Validacion... Si no hay usuario...
+		if(!foundUser) {
+			return res.status(400).json({
+				msg: "El usuario o la contraseña son incorrectos."
+			})
+		}
+
+        // 4. Si todo coincide, el usuario fue encontrado, entonces ahora evalua contraseña.
+		const verifiedPass = await bcryptjs.compare(password, foundUser.password)
+
+		
+        // 5. Validacion - Si el password no coincide
+		if(!verifiedPass) {
+			return await res.status(400).json({
+				msg: "El usuario o la contraseña no coinciden."
+			})
+		}
+
+		
+        // 6. Si TODO coincide y es correcto, generamos un Json Web Token
+
+        // 6a. Establecer un payload (Datos del usuario)
+		const payload = {
+			user: {
+				id: foundUser.id
+			}
+		}
+
+		
+        // 6b. Firma del Json Web Token
+		jwt.sign(
+			payload,
+			process.env.SECRET,
+			{
+				expiresIn: 360000
+			},
+			(error, token) => {
+				if(error) throw error
+
+				res.json({
+					msg: "Inicio de sesión exitoso.",
+					data: token
+				})
+			}
+		)
+		
+		return
+
+
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({
+			msg: "Hubo un problema con la autenticación.",
+			data: error
+		})
+	}
+}
+
+
+// 3. Verificar usuario
+// CUANDO ESTAMOS ACCEDIENDO A DIFERENTES RUTAS (SAUCES) PREGUNTAR SI EL USUARIO TIENE PERMISOS O NO. ENTONCES, PARA CONFIRMARLO, SE LE PIDE SU TOKEN.
+// Una ruta que pide tokens para verificar
+exports.verifyToken = async (req, res) => {
+
+
+	try {
+		
+		// 1. BUSCAR EL ID DEL USUARIO (DEL TOKEN ABIERTO) EN BASE DE DATOS
+
+		const foundUser = await User.findById(req.user.id).select("-password")
+
+		return res.json({
+			msg: "Datos de usuario encontrados.",
+			data: foundUser
+		})
+
+
+	} catch (error) {
+			console.log(error)
+
+			res.status(500).json({
+				msg: "Hubo un error con el usuario"
+			})
+	}
+
+}
+
+
+
+
+
+
+
+
 
 
