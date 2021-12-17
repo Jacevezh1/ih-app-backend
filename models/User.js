@@ -27,10 +27,10 @@ const userSchema = mongoose.Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
     admin: {
-		required: true, 
-        type: Boolean
+		type: Boolean,
+		required: true
 	}
 })
 
@@ -38,6 +38,8 @@ const userSchema = mongoose.Schema({
 
 // 3. MODELOS
 const User = mongoose.model("User", userSchema)
+
+
 
 // 4. EXPORTACIÓN
 module.exports = User

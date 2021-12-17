@@ -23,6 +23,7 @@ app.use(express.json())
 // 3. RUTAS
 app.use("/sauces", require("./routes/sauces"))
 
+app.use("/users", require("./routes/users"))
 
 
 // 4. SERVER
