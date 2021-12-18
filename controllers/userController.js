@@ -79,7 +79,6 @@ exports.create = async (req, res) => {
 	}
 }
 
-
 // 2. Iniciar Sesion 
 // Autenticar que la persona que pase su email y contraseña coincidan, y se le asigna un token
 exports.login = async (req, res) => {
@@ -150,7 +149,6 @@ exports.login = async (req, res) => {
 		})
 	}
 }
-
 
 // 3. Verificar usuario
 // CUANDO ESTAMOS ACCEDIENDO A DIFERENTES RUTAS (SAUCES) PREGUNTAR SI EL USUARIO TIENE PERMISOS O NO. ENTONCES, PARA CONFIRMARLO, SE LE PIDE SU TOKEN.
