@@ -15,7 +15,7 @@ const salsaSchema = mongoose.Schema({
 	},
 	content: {
 		type: String,
-		required: true
+		default: true
 	},
 	image: {
 		type: String,
@@ -23,11 +23,11 @@ const salsaSchema = mongoose.Schema({
 	},
 	description: {
 		type: String,
-		required: true
+		default: true
 	},
 	ml: {
 		type: Number,
-		required: true
+		default: true
 	}
 })
 
