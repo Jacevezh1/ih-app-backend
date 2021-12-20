@@ -15,8 +15,16 @@ router.post("/create", userController.create)
 // Iniciar Sesion
 router.post("/login", userController.login)
 
+// 4. Actualizar una User
+router.put("/edit/:id", userController.editUser)
+
+// 5. Borrar un perfil
+router.delete("/delete/:id", userController.deleteUser)
+
 // Verificacion de usuario
 router.get("/verifytoken", authorization, userController.verifyToken)
+
+
 
 
 

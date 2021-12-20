@@ -179,7 +179,74 @@ exports.verifyToken = async (req, res) => {
 }
 
 
+// 4. Editar Usuario
+exports.editUser = async (req, res) => {
+	
+	const { id } = req.params
 
+	const { 
+		name,
+		lastname,
+		country,
+		adress,
+        email,
+	} = req.body
+
+
+	try {
+		const updatedUser = await User.findByIdAndUpdate(
+			id, // Id de la salsa
+			{
+				name,
+				lastname,
+				country,
+				adress,
+				email,
+                // Propiedades del modelo a cambiar sobre la salsa
+			}, 
+			{new: true}
+		)
+
+		res.json({
+			msg: "User actualizada con éxito.",
+			data: updatedUser
+		})
+
+		
+	} catch (error) {
+		
+		res.status(500).json({
+			msg: "Hubo un error con la actualización de la User.",
+			error: error
+		})
+
+	}
+
+}
+
+
+// 5. Delete Usuario
+exports.deleteUser = async (req, res) => {
+
+	const { id } = req.params
+
+	try {
+		
+		const deletedUser = await User.findByIdAndRemove({_id: id})
+
+		res.json({
+			msg: "User borrada con éxito.",
+			data: deletedUser
+		})
+
+	} catch (error) {
+		res.status(500).json({
+			msg: "Hubo un error borrando el User.",
+			error: error
+		})
+	}
+
+}
 
 
 
