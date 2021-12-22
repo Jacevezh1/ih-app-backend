@@ -91,18 +91,19 @@ Usamos [Git](https://git-scm.com/) para el versionado. Para todas las versiones 
 
 <h3 align="left">Languages and Tools:</h3>
 <br>
-<p align="left">  <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://heroku.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://postman.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> </a> </p>
+<p align="left">  <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://heroku.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> <a href="https://postman.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/> </a> </p>
+<a href="https://es.reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> </p>
 
 <br>
 <hr>
 
-## Autores ✒️
+## Autor ✒️
 
-- **Pablo** - _Founder & developer_ - [Pablo]()
 - **Javier** - _Founder & developer_ - [JavierHerrera](#fulanito-de-tal)
 
 <br>
 <hr>
+
 
 # How does our project work?
 
@@ -114,67 +115,45 @@ Usamos [Git](https://git-scm.com/) para el versionado. Para todas las versiones 
 
 - Realizar la funcionalidad de cada ruta con su respectivo controller (Encriptacion, Validacion, Regex)
 
-- Creacion de ruta / vista, de cada elemento que compone nuestra pagina
+- Creacion de ruta para conexion de Api
 
 - Desarrollo de un usuario con su respectivo modelo, y 
 
-- Desarrollo de un card post con su respectivo modelo, (Aqui se postean los hikes que usuario quiera agregar)
+- Desarrollo de un producto con su respectivo modelo
 
-- Integracion de rutas, Layout Middleware, Middlewares en app.js
+- Integracion de rutas, Layout Middleware, Middlewares en index.js
 
-- Integracion de rutas privadas y publicas.
-
-- Verficar sesión en navegador (cookie) y MongoDB (session).
+- Verficar a traves de tokens
 
 -Instalacion de dependencias (Package.json)
 
+-Middlewares, para efecto de autorizacion de rutas.
+
 ```
 
-## b. Crear la ruta de LOGIN
+## b. API's
 
-    - Realizar parcialmente la ruta con verificación de contraseña
-    - Creación de archivo "sesión" (session.js)
-    	- express-session
-    	- mongoconnect
-    - Integrarlo en index.js
-    - Integrarlo directamente en la ruta de POST
-    - Verficar sesión en navegador (cookie) y MongoDB (session)
+    
+-
+-
+-
+-
+-
+-
+-
+-
 
-## c. Cerrar sesión
-
-    - Arreglos en el Header del proyecto y su <nav>
-    - Ruteo de POST para cerrar sesión
-
-## d. Patrón de autorización (Áreas privadas de la plataforma)
-
-    - Determinación de roles (visitantes (no registrados) y usuarios (registrados))
-    - Route-guard (isLoggedIn vs isLoggedOut)
-    - Verificar que en el Header aparezca un "Hola {{nombre}}"
 
 <br>
 
 
 
-
 ## e. Models 
 ```
-  1. User:
-
-  a. Name
-  b. Email
-  c. Encripted Password
+  1. User
  
 
-   2. Hikes(posts):
-
-   a. Imagen
-   b. Nombre
-   c. Horarios
-   d. Location
-   e. Contact
-   f. Descripción
-   g. Deporte
-   
+   2. Products
 
 ```
 
@@ -194,7 +173,6 @@ c) Encriptacion de contraseñas de usuarios
 d) Regex
 
 
-
 ```
 
 
@@ -207,13 +185,9 @@ d) Regex
 
 a) Configuracion basica de la sessiones:
 
+  -Tokens
 
-  -Cookie
-
-  -httpOnly
-
-  -maxAge
-
+  -Validacion de tokens
 
 ```
 
@@ -225,7 +199,7 @@ a) Configuracion basica de la sessiones:
 
 ```
 
-Desarrollo completo del CRUD para los post, dependiendo del usuario puede acceder a ciertos elementos CRUD.
+Desarrollo completo del CRUD para los productos
 
 a) Create
 
@@ -234,7 +208,6 @@ b) Read
 c) Update
 
 d) Delete
-
 
 ```
 
