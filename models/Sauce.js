@@ -9,10 +9,6 @@ const salsaSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	price: {
-		type: Number,
-		required: true
-	},
 	content: {
 		type: String,
 		default: true
@@ -28,7 +24,20 @@ const salsaSchema = mongoose.Schema({
 	ml: {
 		type: Number,
 		default: true
+	}, 
+	precioID: {
+		type: String,
+		required: true
+	}, 
+	price: {
+		type: String,
+		required: true
+	}, 
+	productoID: {
+		type: String,
+		required: true
 	}
+
 })
 
 

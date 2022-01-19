@@ -28,7 +28,9 @@ app.use("/users", require("./routes/users"))
 
 
 app.use("/api/checkout", require("./routes/checkout"))
-app.use("/api/glasses", require("./routes/sauces"))
+app.use("/api/sauces", require("./routes/sauces"))
+
+
 
 // 4. SERVER
 app.listen(process.env.PORT, () => {

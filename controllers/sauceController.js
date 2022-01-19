@@ -1,3 +1,5 @@
+const stripe = require('stripe')(process.env.STRIPE_SK);
+
 const Sauce = require("./../models/Sauce")
 
 
@@ -5,45 +7,63 @@ const Sauce = require("./../models/Sauce")
 
 exports.create = async (req, res) => {
 
-		const { 
-			name,
-			price,
-			content,
-			image,
-			description,
-            ml
-		 } = req.body
+	const { name, content, description, image, price }	= req.body
+	
+	const newProductStripe = await stripe.products.create({
+		name: name,
+		description: description, 
+		images: [image],
 
-	//Crear una nueva salsa en mi DB
-	try {
-		const newSauce = await Sauce.create({
-			name,
-			price,
-			content,
-			image,
-			description,
-            ml
-		})
+	});
 
-		// Devolver respuesta en JSON (Siempre)
-		res.json({
-			msg: "Sauce creada con éxito",
-			data: newSauce		
-		})
+	console.log(newProductStripe);
 
-	} catch (error) {
+	const newProductStripeID = newProductStripe.id
+	const newProductStripeName = newProductStripe.name
+	const newProductStripeMetadataContent = newProductStripe.metadata.content
+	const newProductStripeDescription = newProductStripe.description
+
+	const prices = await stripe.prices.create({
+		unit_amount: price,
+		currency: 'usd',
+		product: newProductStripeID,
+		nickname: newProductStripeDescription,
+		metadata: {
+			content: content
+		}
 		
-		res.status(500).json({
-			msg: "Hubo un error creando la Salsa",
-			error: error
-		})
+	});
 
-       
+	console.log("Precio final", prices);
 
-	} 
+	/* const newProductStripePriceId = price.id
+	// MongoDB
+	// Guadar datos de stripe // 109min
 
+	const newSauces = await Sauce.create({
+		name: newProductStripeName,
+		content: newProductStripeMetadataContent,
+		image: image,
+		description: newProductStripeDescription,
+		precioID: newProductStripePriceId,
+		productoID: newProductStripeID,
+		price: 20
+	}) 
+
+	console.log("Lentes creados en DB,",newSauces);
+
+
+	res.json({
+		msg: "Sauces creadas de stripe con éxito.",
+		data: newSauces
+	}) */
 
 }
+
+
+
+
+
 
 // 2. Read all Sauces Controller
 
@@ -169,4 +189,4 @@ exports.delete = async (req, res) => {
 		})
 	}
 
-}
+} 
